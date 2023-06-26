@@ -232,7 +232,7 @@ int ksu_handle_prctl(int option, unsigned long arg2, unsigned long arg3,
 		// someone wants to be root manager, just check it!
 		// arg3 should be `/data/user/<userId>/<manager_package_name>`
 		char param[128];
-		if (copy_from_user(param, arg3, sizeof(param))) {
+		if (copy_from_user(param, &arg3, sizeof(param))) {
 			pr_err("become_manager: copy param err\n");
 			return 0;
 		}
